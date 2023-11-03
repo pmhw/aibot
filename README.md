@@ -3,8 +3,12 @@
 
 > 该文档更新与 2023.11.3
 
+Telegram 机器人开发框架 无需繁琐快速开发属于自己的电报机器人
+
+![shell快捷安装](https://github.com/pmhw/aibot/assets/78243256/b858a34a-6646-43ce-ae68-f3a4a8ed9e18)
 
 
+![控制台调试](https://github.com/pmhw/aibot/assets/78243256/8ba68c5a-35cc-4874-b610-e878b0276e76)
 ## 特性
 
 * 基于PHP`8.0+` Thinkphp `8.2`重构
