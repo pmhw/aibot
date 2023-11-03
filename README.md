@@ -3,13 +3,19 @@
 
 > 该文档更新与 2023.11.3
 
+## 描述
+
+
 多线程协作✨ | 高效异步响应 🎄 | 快速开发上线 🎊 | 插件化开发 🧨 | 
 
 - Telegram 机器人开发框架 无需繁琐快速开发属于自己的电报机器人
 
-![image](https://github.com/pmhw/aibot/assets/78243256/1c5fd274-7c0b-4829-a5b6-fa59cfd4be75)
+![image](https://github.com/pmhw/aibot/assets/78243256/1c5fd274-7c0b-4829-a5b6-fa59cfd4be75) ![image](https://github.com/pmhw/aibot/assets/78243256/97d04d8e-c9f4-4c7b-ba0d-132f7b173157)
 
-![image](https://github.com/pmhw/aibot/assets/78243256/97d04d8e-c9f4-4c7b-ba0d-132f7b173157)
+## 计划
+
+
+📌 插件下载 【待完成】
 
 
 
@@ -17,6 +23,8 @@
 
 
 ![控制台调试](https://github.com/pmhw/aibot/assets/78243256/8ba68c5a-35cc-4874-b610-e878b0276e76)
+
+
 ## 特性
 
 * 基于PHP`8.0+` Thinkphp `8.2`重构
