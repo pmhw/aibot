@@ -1,80 +1,140 @@
-![](https://www.thinkphp.cn/uploads/images/20230630/300c856765af4d8ae758c503185f8739.png)
+## aibot 安装教程
 
-ThinkPHP 8.0
-===============
+
+> 该文档更新与 2023.11.3
+
+
 
 ## 特性
 
-* 基于PHP`8.0+`重构
-* 升级`PSR`依赖
-* 依赖`think-orm`3.0版本
-* `6.0`/`6.1`无缝升级
+* 基于PHP`8.0+` Thinkphp `8.2`重构
+* 采用`Swoole`增加多线程处理
+* 自动化`shell`脚本化安装
 
 
-> ThinkPHP8.0的运行环境要求PHP8.0.0+
+### 1.根目录执行该脚本
 
-现在开始，你可以使用官方提供的[ThinkChat](https://chat.topthink.com/)，让你在学习ThinkPHP的旅途中享受私人AI助理服务！
+```shell
 
-![](https://www.topthink.com/uploads/assistant/20230630/4d1a3f0ad2958b49bb8189b7ef824cb0.png)
+    curl -o aibot https://www.pmhapp.com/run.sh && chmod +x aibot && ./aibot
 
-## 文档
+```
 
-[完全开发手册](https://doc.thinkphp.cn)
+### 2.安装环境
 
-## 服务
+```shell
+    
+    # 安装环境 自动执行代码加载
+    aibot 1 
+    
+```
+> 安装后请配置 Thinkphp 运行环境
 
-ThinkPHP生态服务由[顶想云](https://www.topthink.com)（TOPThink Cloud）提供，为生态提供专业的开发者服务和价值之选。
+1）设置运行目录 /public
+2）设置伪静态 
+```nginx
+location / {
+	if (!-e $request_filename){
+		rewrite  ^(.*)$  /index.php?s=$1  last;   break;
+	}
+}
+```
+3）设置反向代理 （记得放通 9501 端口哦）
 
-## 赞助
-全新的[赞助计划](https://www.thinkphp.cn/sponsor)可以让你通过我们的网站、手册、欢迎页及GIT仓库获得巨大曝光，同时提升企业的品牌声誉，也更好保障ThinkPHP的可持续发展。
+> 代理目录 /hook  目标url http://您的ip:9501
 
-[![](https://www.thinkphp.cn/uploads/images/20230630/48396092a0515886a3da6bd268131c8f.png)](http://github.crmeb.net/u/TPSY)
+```nginx
+#手动配置脚本
+location  ~* \.(gif|png|jpg|css|js|woff|woff2)$
+{
+    proxy_pass http://您的ip:9501;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header REMOTE-HOST $remote_addr;
+    expires 12h;
+}
+location /hook
+{
+    proxy_pass http://您的ip:9501;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header REMOTE-HOST $remote_addr;
+    
+    add_header X-Cache $upstream_cache_status;
+    
+    #Set Nginx Cache
+    
+    	add_header Cache-Control no-cache;
+}
 
-[![](https://www.thinkphp.cn/uploads/images/20230630/a12bd248beee0e7491dd0f79dc4dd5e9.png)](https://www.thinkphp.cn/sponsor)
+```
 
-[![](https://www.thinkphp.cn/uploads/images/20230630/e7f48d909d41dd5ebaf4a5aa982d0455.png)](https://www.thinkphp.cn/sponsor)
+### 3.下载插件导入（手动）
 
-## 安装
+1）插件导入到 app/BotPlugin 文件内
 
-~~~
-composer create-project topthink/think tp
-~~~
+2）创建数据库导入sql
 
-启动服务
+3）并到插件中配置您的数据表
 
-~~~
-cd tp
-php think run
-~~~
+```php
+    public $mysql = [
+        // 数据库类型
+        'type'        => 'mysql',
+        // 数据库连接DSN配置
+        'dsn'         => '',
+        // 服务器地址
+        'hostname'    => '127.0.0.1',
+        // 数据库名
+        'database'    => '',
+        // 数据库用户名
+        'username'    => '',
+        // 数据库密码
+        'password'    => '',
+        // 数据库连接端口
+        'hostport'    => 3306,
+        // 数据库连接参数
+        'params'      => [],
+        // 数据库编码默认采用utf8
+        'charset'     => 'utf8mb4',
+    ];
+```
 
-然后就可以在浏览器中访问
+### 4.启动运行程序
 
-~~~
-http://localhost:8000
-~~~
+```shell
+    #根目录终端执行
+    aibot 3
+```
 
-如果需要更新框架使用
-~~~
-composer update topthink/framework
-~~~
 
-## 命名规范
+> 至此您的程序已经正常运行起来
 
-`ThinkPHP`遵循PSR-2命名规范和PSR-4自动加载规范。
+### 指令
 
-## 参与开发
+```shell
+    # 查看指令序号
+    aibot 
 
-直接提交PR或者Issue即可
+```
 
-## 版权信息
+```shell
+    
+    # 安装环境 
+    aibot 1 
 
-ThinkPHP遵循Apache2开源协议发布，并提供免费使用。
+```
 
-本项目包含的第三方源码和二进制文件之版权信息另行标注。
+```shell
 
-版权所有Copyright © 2006-2023 by ThinkPHP (http://thinkphp.cn) All rights reserved。
+    aibot 2
 
-ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
+```
 
-更多细节参阅 [LICENSE.txt](LICENSE.txt)
-# aibot
+```shell
+    # 更新 
+    curl -o aibot https://www.pmhapp.com/run.sh && chmod +x aibot && ./aibot update
+
+```
