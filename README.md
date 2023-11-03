@@ -3,7 +3,7 @@
 
 > 该文档更新与 2023.11.3
 
-Telegram 机器人开发框架 无需繁琐快速开发属于自己的电报机器人
+![]([https://github.com/pmhw/aibot/assets/78243256/b858a34a-6646-43ce-ae68-f3a4a8ed9e18](https://telegram.org/img/t_logo_sprite.svg))Telegram 机器人开发框架 无需繁琐快速开发属于自己的电报机器人
 
 ![shell快捷安装](https://github.com/pmhw/aibot/assets/78243256/b858a34a-6646-43ce-ae68-f3a4a8ed9e18)
 
